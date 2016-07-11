@@ -35,7 +35,7 @@ public class ConsultaResource extends AbstractResource {
 	}
 
 	@GET
-	@Path("abrir") // abrir chamdo
+	@Path("abrir")
 	public Response abrir(@QueryParam("usuarioId") Long usuarioId, @QueryParam("medicoId") Long medicoId,
 			@QueryParam("especialidadeId") Long especialidadeId, @QueryParam("horarioId") Long horarioId) {
 		try{
