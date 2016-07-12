@@ -45,6 +45,14 @@ public class ConsultaResource extends AbstractResource {
 			return Response.ok(false).build();
 		}	
 	}
+	
+	@GET
+	@Path("consultasAbertasPaciente")
+	public List<ConsultaDTO> consultasAbertasPaciente(@QueryParam("usuarioId") Long usuarioId) {
+		List<Consulta> lst = this.consultaService.consultasAbertasPaciente(usuarioId);
+		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);
+		return retorno;
+	}
 
 	@GET
 	@Path("consultasAbertas") // tela de notificacao

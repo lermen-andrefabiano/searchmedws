@@ -12,6 +12,8 @@ public class UsuarioDTO {
 	private String email;
 	private String endereco;
 	private String senha;
+	private Double latitude;
+	private Double longitude;
 	private String tipo;
 	private MedicoDTO medico;
 	private List<MedicoFavoritoDTO> favoritos;
@@ -49,6 +51,22 @@ public class UsuarioDTO {
 
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+	
+	public Double getLatitude() {
+		return latitude;
+	}
+	
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+	
+	public Double getLongitude() {
+		return longitude;
+	}
+	
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
 	}
 
 	public String getSenha() {

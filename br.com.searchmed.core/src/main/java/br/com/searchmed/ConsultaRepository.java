@@ -20,4 +20,6 @@ interface ConsultaRepository {
 
 	List<Consulta> consultasAntigas(Long usuarioId);
 
+	List<Consulta> consultasAbertasPaciente(Long usuarioId);
+
 }
