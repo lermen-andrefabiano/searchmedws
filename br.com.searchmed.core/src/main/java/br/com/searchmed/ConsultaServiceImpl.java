@@ -92,6 +92,8 @@ public class ConsultaServiceImpl implements ConsultaService {
 
 		classificacao = this.consultaClassificaocaoRep.salvar(classificacao);
 		consulta.setStatus(TipoStatus.F);
+		
+		consulta.setClassificacao(classificacao);
 
 		this.consultaRep.salvar(consulta);
 
@@ -154,6 +156,17 @@ public class ConsultaServiceImpl implements ConsultaService {
 	public List<Consulta> consultasAntigas(Long usuarioId) {
 		try {
 			List<Consulta> result = this.consultaRep.consultasAntigas(usuarioId);	
+			getExamesConsulta(result);
+			return result;
+		} catch (Exception e) {			
+		}
+		return null;		
+	}
+	
+	@Override
+	public List<Consulta> consultasAntigasMedico(Long medicoId) {
+		try {
+			List<Consulta> result = this.consultaRep.consultasAntigasMedico(medicoId);	
 			getExamesConsulta(result);
 			return result;
 		} catch (Exception e) {			

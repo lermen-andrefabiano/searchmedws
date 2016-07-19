@@ -42,4 +42,6 @@ public interface ConsultaService {
 
 	List<Consulta> consultasAbertasPaciente(Long medicoId);
 
+	List<Consulta> consultasAntigasMedico(Long medicoId);
+
 }

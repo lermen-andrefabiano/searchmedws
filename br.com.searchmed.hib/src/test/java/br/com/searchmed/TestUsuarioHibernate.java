@@ -21,7 +21,7 @@ public class TestUsuarioHibernate extends AbstractSpringTest {
 	@Inject
 	private UsuarioRepository usuarioRep;
 	
-	@Ignore
+	//@Ignore
 	@Test
 	public void obterPorId() {
 		Usuario u = this.usuarioRep.obterPorId(2L);

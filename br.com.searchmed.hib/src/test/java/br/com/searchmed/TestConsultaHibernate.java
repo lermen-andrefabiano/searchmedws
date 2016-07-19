@@ -24,11 +24,11 @@ public class TestConsultaHibernate extends AbstractSpringTest {
 	//@Ignore
 	@Test
 	public void obterPorId() {		
-		Consulta c = this.consultaRep.obterPorId(7L);	
+		Consulta c = this.consultaRep.obterPorId(1L);	
 		
-		Medico medico = new Medico();
-		medico.setId(9L);
-		c.setMedico(medico );
+		//Medico medico = new Medico();
+		//medico.setId(9L);
+		//c.setMedico(medico );
 		//c.setExames(new ArrayList<ConsultaExame>());
 		
 		//Exame exame = new Exame();
@@ -38,7 +38,7 @@ public class TestConsultaHibernate extends AbstractSpringTest {
 				
 		//c.getExames().add(ce);
 		
-		//c.setStatus(TipoStatus.C);
+		c.setStatus(TipoStatus.F);
 		
 		consultaRep.salvar(c);
 		

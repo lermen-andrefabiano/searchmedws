@@ -15,12 +15,7 @@ public enum TipoStatus {
     /**
      * Finalizado
      */
-    F, 
-
-    /**
-     * Classificações pendentes
-     */
-    C,
+    F,   
     
     /**
      * Rejeitada

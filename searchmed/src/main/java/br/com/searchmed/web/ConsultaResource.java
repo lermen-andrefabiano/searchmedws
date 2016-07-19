@@ -69,6 +69,14 @@ public class ConsultaResource extends AbstractResource {
 		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);
 		return retorno;
 	}
+	
+	@GET
+	@Path("consultasAntigasMedico") // tela de notificacao
+	public List<ConsultaDTO> consultasAntigasMedico(@QueryParam("medicoId") Long medicoId) {
+		List<Consulta> lst = this.consultaService.consultasAntigasMedico(medicoId);
+		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);
+		return retorno;
+	}
 
 	@GET
 	@Path("classificacao") // tela de classificacao

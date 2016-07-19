@@ -19,7 +19,7 @@ public class TestEspecialidadeHibernate extends AbstractSpringTest {
         assertNotNull(this.especialidadeRep.obterPorId(1L));
     }
     
-    @Ignore
+    //@Ignore
     @Test
     public void salvar() {
         assertNotNull(this.especialidadeRep.salvar(new Especialidade("Acupuntura")));

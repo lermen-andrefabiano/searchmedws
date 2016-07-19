@@ -27,10 +27,10 @@ public class TestConsultaClassificacaoHibernate extends AbstractSpringTest {
 		this.classificaocaoRep.persist(c);
 	}
 
-	@Ignore
+	
 	@Test
 	public void excluir() {
-		ConsultaClassificacao m = this.classificaocaoRep.obterPorId(3L);
+		ConsultaClassificacao m = this.classificaocaoRep.obterPorId(1L);
 
 		if (isResult(m, "excluir")) {
 			this.classificaocaoRep.excluir(m);
