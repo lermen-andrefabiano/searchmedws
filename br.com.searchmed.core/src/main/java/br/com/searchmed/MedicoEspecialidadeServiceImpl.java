@@ -24,9 +24,6 @@ public class MedicoEspecialidadeServiceImpl implements
 	private MedicoEspecialidadeRepository medicoEspecialidadeRep;
 	
 	@Inject
-	private MedicoRepository medicoRep;	
-	
-	@Inject
 	private UsuarioRepository usuarioRep;		
 	
 	@Inject

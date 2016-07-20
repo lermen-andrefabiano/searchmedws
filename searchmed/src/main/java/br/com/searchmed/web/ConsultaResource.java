@@ -53,9 +53,17 @@ public class ConsultaResource extends AbstractResource {
 		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);
 		return retorno;
 	}
+	
+	@GET
+	@Path("listarConsultasDoDia")
+	public List<ConsultaDTO> listarConsultasDoDia(@QueryParam("medicoId") Long medicoId) {
+		List<Consulta> lst = this.consultaService.listarConsultasDoDia(medicoId);
+		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);
+		return retorno;
+	}
 
 	@GET
-	@Path("consultasAbertas") // tela de notificacao
+	@Path("consultasAbertas")
 	public List<ConsultaDTO> consultasAbertas(@QueryParam("medicoId") Long medicoId) {
 		List<Consulta> lst = this.consultaService.listarConsultasAbertas(medicoId);
 		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);
@@ -63,7 +71,7 @@ public class ConsultaResource extends AbstractResource {
 	}
 	
 	@GET
-	@Path("consultasAntigas") // tela de notificacao
+	@Path("consultasAntigas")
 	public List<ConsultaDTO> consultasAntigas(@QueryParam("usuarioId") Long usuarioId) {
 		List<Consulta> lst = this.consultaService.consultasAntigas(usuarioId);
 		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);

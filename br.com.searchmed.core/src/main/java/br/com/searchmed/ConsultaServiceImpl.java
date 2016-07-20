@@ -142,6 +142,17 @@ public class ConsultaServiceImpl implements ConsultaService {
 	}
 	
 	@Override
+	public List<Consulta> listarConsultasDoDia(Long medicoId) {
+		try {
+			List<Consulta> result = this.consultaRep.listarConsultasDoDia(medicoId);		
+			getExamesConsulta(result);
+			return result;
+		} catch (Exception e) {			
+		}
+		return null;
+	}
+	
+	@Override
 	public List<Consulta> listarConsultasAbertas(Long medicoId) {
 		try {
 			List<Consulta> result = this.consultaRep.listarConsultasAbertas(medicoId);		

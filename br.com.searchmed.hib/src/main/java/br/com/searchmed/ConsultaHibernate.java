@@ -33,12 +33,10 @@ class ConsultaHibernate extends AbstractCrudHibernate<Consulta, Long> implements
 		@SuppressWarnings("unchecked")
 		List<Consulta> lst = c.list();
 		return lst;
-	}
+	}	
 	
 	@Override
 	public List<Consulta> consultasAbertasPaciente(Long usuarioId) {
-		Character[] status = {'A', 'E'};
-		
 		Criteria c = getHibernateTemplate().getSessionFactory()
 				.getCurrentSession().createCriteria(Consulta.class);		
 		c.createAlias("especialidade", "especialidade");
@@ -47,6 +45,24 @@ class ConsultaHibernate extends AbstractCrudHibernate<Consulta, Long> implements
 		c.createAlias("horario", "horario");
 		c.add(Restrictions.eq("usuario.id", usuarioId));
 		c.add(Restrictions.or(Restrictions.eq("status", TipoStatus.A), Restrictions.eq("status", TipoStatus.E)));
+		c.addOrder(Order.asc("data"));
+		c.setMaxResults(MAX_RESULTS_LST);
+		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		@SuppressWarnings("unchecked")
+		List<Consulta> lst = c.list();
+		return lst;
+	}
+	
+	@Override
+	public List<Consulta> listarConsultasDoDia(Long medicoId) {
+		Criteria c = getHibernateTemplate().getSessionFactory()
+				.getCurrentSession().createCriteria(Consulta.class);		
+		c.createAlias("especialidade", "especialidade");
+		c.createAlias("medico", "medico");
+		c.createAlias("usuario", "usuario");
+		c.createAlias("horario", "horario");
+		c.add(Restrictions.eq("medico.id", medicoId));
+		c.add(Restrictions.eq("status", TipoStatus.E));
 		c.addOrder(Order.asc("data"));
 		c.setMaxResults(MAX_RESULTS_LST);
 		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);

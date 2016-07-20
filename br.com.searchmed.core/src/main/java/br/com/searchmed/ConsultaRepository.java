@@ -24,4 +24,6 @@ interface ConsultaRepository {
 
 	List<Consulta> consultasAntigasMedico(Long medicoId);
 
+	List<Consulta> listarConsultasDoDia(Long medicoId);
+
 }
