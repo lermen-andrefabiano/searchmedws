@@ -105,17 +105,27 @@ public class MedicoResource extends AbstractResource {
 	@POST
 	@Path("incluirH")
 	public Response incluirH(@QueryParam("medicoId") Long medicoId, List<InfoSalvarHorarioDTO> info) {
+		Calendar hoje = Calendar.getInstance();
 		Calendar inicio = Calendar.getInstance();
-	    Calendar fim = Calendar.getInstance();
-	   
+	    Calendar fim = Calendar.getInstance();	   
+	    
+	    int diaSemana = hoje.get(Calendar.DAY_OF_WEEK);	   
 		
 		for(InfoSalvarHorarioDTO m : info){
 		    String[] inicioSplit = m.getInicio().split(":");
 		    String[] fimSplit = m.getFim().split(":");
+		    TipoDia tipoDia = TipoDia.valueOf(m.getDia());
+		    int somaDia = 0;
 		    
+		    if(diaSemana < tipoDia.getDia()){
+		    	somaDia = tipoDia.getDia() - diaSemana;
+		    }
+		 
+		    inicio.set(Calendar.DAY_OF_MONTH, somaDia);
 		    inicio.set(Calendar.HOUR_OF_DAY, Integer.valueOf(inicioSplit[0]));
 		    inicio.set(Calendar.MINUTE, Integer.valueOf(inicioSplit[1]));
 		    
+		    fim.set(Calendar.DAY_OF_MONTH, somaDia);
 		    fim.set(Calendar.HOUR_OF_DAY, Integer.valueOf(fimSplit[0]));
 		    fim.set(Calendar.MINUTE, Integer.valueOf(fimSplit[1]));
 		    		

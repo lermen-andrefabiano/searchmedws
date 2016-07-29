@@ -3,6 +3,7 @@ package br.com.searchmed.core.entidades;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.searchmed.core.enuns.TipoDia;
+import br.com.searchmed.core.enuns.TipoHorario;
 
 @Entity
 @Table(schema = "searchmed")
@@ -44,6 +46,10 @@ public class MedicoHorario implements Serializable {
 	private Boolean orderChegada;	
 
 	private Boolean repetirHorario;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(nullable = false, length = 1)
+	private TipoHorario status;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "medico_id", referencedColumnName = "id", nullable = false)
@@ -105,6 +111,14 @@ public class MedicoHorario implements Serializable {
 		this.repetirHorario = repetirHorario;
 	}
 
+	public TipoHorario getStatus() {
+		return status;
+	}
+	
+	public void setStatus(TipoHorario status) {
+		this.status = status;
+	}
+	
 	public Boolean getOrderChegada() {
 		return orderChegada;
 	}

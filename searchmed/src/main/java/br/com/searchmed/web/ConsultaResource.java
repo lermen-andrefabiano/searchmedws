@@ -47,6 +47,14 @@ public class ConsultaResource extends AbstractResource {
 	}
 	
 	@GET
+	@Path("consultasEmAndamento")
+	public List<ConsultaDTO> consultasEmAndamento(@QueryParam("usuarioId") Long usuarioId) {
+		List<Consulta> lst = this.consultaService.consultasEmAndamento(usuarioId);
+		List<ConsultaDTO> retorno = super.mapList(lst, ConsultaDTO.class);
+		return retorno;
+	}
+	
+	@GET
 	@Path("consultasAbertasPaciente")
 	public List<ConsultaDTO> consultasAbertasPaciente(@QueryParam("usuarioId") Long usuarioId) {
 		List<Consulta> lst = this.consultaService.consultasAbertasPaciente(usuarioId);

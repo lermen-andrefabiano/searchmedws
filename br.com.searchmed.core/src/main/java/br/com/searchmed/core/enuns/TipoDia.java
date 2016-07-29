@@ -2,14 +2,24 @@ package br.com.searchmed.core.enuns;
 
 public enum TipoDia {
 	
-	SEGUNDA,
+	SEGUNDA(2),
 	
-	TERCA,
+	TERCA(3),
 	
-	QUARTA,
+	QUARTA(4),
 	
-	QUINTA,
+	QUINTA(5),
 	
-	SEXTA,
+	SEXTA(6);
+	
+	int dia;
+	 
+	private TipoDia(int dia){
+		this.dia = dia;
+	}
+ 
+	public int getDia(){
+		return dia;
+	}
 
 }

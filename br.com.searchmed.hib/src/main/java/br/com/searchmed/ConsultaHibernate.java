@@ -36,6 +36,24 @@ class ConsultaHibernate extends AbstractCrudHibernate<Consulta, Long> implements
 	}	
 	
 	@Override
+	public List<Consulta> consultasEmAndamento(Long usuarioId) {
+		Criteria c = getHibernateTemplate().getSessionFactory()
+				.getCurrentSession().createCriteria(Consulta.class);		
+		c.createAlias("especialidade", "especialidade");
+		c.createAlias("medico", "medico");
+		c.createAlias("usuario", "usuario");
+		c.createAlias("horario", "horario");
+		c.add(Restrictions.eq("usuario.id", usuarioId));
+		c.add(Restrictions.eq("status", TipoStatus.E));
+		c.addOrder(Order.asc("data"));
+		c.setMaxResults(MAX_RESULTS_LST);
+		c.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		@SuppressWarnings("unchecked")
+		List<Consulta> lst = c.list();
+		return lst;
+	}
+	
+	@Override
 	public List<Consulta> consultasAbertasPaciente(Long usuarioId) {
 		Criteria c = getHibernateTemplate().getSessionFactory()
 				.getCurrentSession().createCriteria(Consulta.class);		

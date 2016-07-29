@@ -15,14 +15,14 @@ import br.com.searchmed.core.enuns.TipoDia;
  * 
  */
 @Named
-public class MedicoHorarioServiceImpl implements MedicoHorarioService {
+public class MedicoHorarioServiceImpl implements MedicoHorarioService {	
 
 	@Inject
 	private MedicoHorarioRepository medicoHorarioRep;
 
 	@Inject
 	private MedicoRepository medicoRep;
-
+	
 	@Override
 	public void excluir(Long id) {
 		MedicoHorario u = this.medicoHorarioRep.obterPorId(id);
@@ -49,6 +49,21 @@ public class MedicoHorarioServiceImpl implements MedicoHorarioService {
 				this.medicoHorarioRep.salvar(medicoHorario);
 			}
 		}		
+	}
+
+	@Override
+	public void tarefaHorarioMedico() {
+		System.out.println("tarefaHorarioMedico");
+		
+		MedicoHorario m = this.obterPorId(1L);
+		
+		System.out.println(m.getMedico().getCrm());
+		
+	}
+
+	@Override
+	public MedicoHorario obterPorId(long l) {
+		return medicoHorarioRep.obterPorId(1L);
 	}
 
 }

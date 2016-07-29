@@ -46,4 +46,6 @@ public interface ConsultaService {
 
 	List<Consulta> listarConsultasDoDia(Long medicoId);
 
+	List<Consulta> consultasEmAndamento(Long usuarioId);
+
 }

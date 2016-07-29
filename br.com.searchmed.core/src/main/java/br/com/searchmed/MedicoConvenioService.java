@@ -15,5 +15,4 @@ public interface MedicoConvenioService {
 
 	List<MedicoHorario> getMedicoHorario(Long medicoId);
 
-
 }
