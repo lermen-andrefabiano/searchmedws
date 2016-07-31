@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.com.searchmed.core.entidades.Medico;
 import br.com.searchmed.core.entidades.MedicoEspecialidade;
+import br.com.searchmed.core.entidades.MedicoHorario;
 
 interface MedicoEspecialidadeRepository {
 
@@ -20,6 +21,8 @@ interface MedicoEspecialidadeRepository {
 	List<MedicoEspecialidade> getEspecialidaMedico(Long prestadorId);
 
 	MedicoEspecialidade obterPorMedico(Long medicoId, Long especialidadeId);
+
+	List<MedicoHorario> getHorarioMedico(Long id);
 	
 
 }

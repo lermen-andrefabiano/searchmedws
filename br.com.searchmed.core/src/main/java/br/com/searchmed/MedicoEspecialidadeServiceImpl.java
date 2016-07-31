@@ -32,7 +32,13 @@ public class MedicoEspecialidadeServiceImpl implements
 	@Override
 	public List<Medico> getMedicoEspecialidades(String convenio, Long especialidadeId) {
 		try {
-			return this.medicoEspecialidadeRep.getMedicoEspecialidades(convenio, especialidadeId);
+			List<Medico> medicos = this.medicoEspecialidadeRep.getMedicoEspecialidades(convenio, especialidadeId);
+			
+			for(Medico m : medicos){
+				m.setHorarios(medicoEspecialidadeRep.getHorarioMedico(m.getId()));
+			}
+			
+			return medicos;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

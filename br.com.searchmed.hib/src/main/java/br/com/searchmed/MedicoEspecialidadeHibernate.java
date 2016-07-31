@@ -9,6 +9,8 @@ import org.hibernate.criterion.Restrictions;
 
 import br.com.searchmed.core.entidades.Medico;
 import br.com.searchmed.core.entidades.MedicoEspecialidade;
+import br.com.searchmed.core.entidades.MedicoHorario;
+import br.com.searchmed.core.enuns.TipoHorario;
 import br.com.searchmed.crud.AbstractCrudHibernate;
 
 @Named
@@ -22,10 +24,10 @@ class MedicoEspecialidadeHibernate extends AbstractCrudHibernate<MedicoEspeciali
 			List<Medico> lst = getHibernateTemplate().getSessionFactory().getCurrentSession()
 					.createCriteria(Medico.class)
 					.createAlias("especialidades", "e")
-					.createAlias("convenios", "c")			
-					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+					.createAlias("convenios", "c")	
 					.add(Restrictions.eq("e.especialidade.id", especialidadeId))
 					.add(Restrictions.ilike("c.convenio", "%" + convenio + "%"))
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 					.list();
 			return lst;
 		} catch (Exception e) {
@@ -56,6 +58,22 @@ class MedicoEspecialidadeHibernate extends AbstractCrudHibernate<MedicoEspeciali
 			e.printStackTrace();
 		}
 		return null;		
+	}
+
+	@Override
+	public List<MedicoHorario> getHorarioMedico(Long id) {
+		try {
+			@SuppressWarnings("unchecked")
+			List<MedicoHorario> lst = getHibernateTemplate().getSessionFactory().getCurrentSession()
+					.createCriteria(MedicoHorario.class)
+					.add(Restrictions.eq("medico.id", id))
+					.add(Restrictions.eq("status", TipoHorario.A))
+					.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+					.list();
+			return lst;
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 }
