@@ -1,6 +1,8 @@
 package br.com.searchmed;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -8,6 +10,7 @@ import javax.inject.Named;
 import br.com.searchmed.core.entidades.Medico;
 import br.com.searchmed.core.entidades.MedicoHorario;
 import br.com.searchmed.core.enuns.TipoDia;
+import br.com.searchmed.core.enuns.TipoHorario;
 
 /**
  * 
@@ -55,15 +58,35 @@ public class MedicoHorarioServiceImpl implements MedicoHorarioService {
 	public void tarefaHorarioMedico() {
 		System.out.println("tarefaHorarioMedico");
 		
-		MedicoHorario m = this.obterPorId(1L);
+		Calendar hoje = Calendar.getInstance();
+		Calendar inicio = Calendar.getInstance();
+	    Calendar fim = Calendar.getInstance();	
+	    int diaSemana = hoje.get(Calendar.DAY_OF_WEEK);	
+	    
+		List<MedicoHorario> horarios = this.medicoHorarioRep.listarHorariosAbertos();
 		
-		System.out.println(m.getMedico().getCrm());
+		for(MedicoHorario h : horarios){
+			TipoDia tipoDia = h.getDia();
+			int somaDia = 0;
+			
+		    if(diaSemana < tipoDia.getDia()){
+		    	somaDia = tipoDia.getDia() - diaSemana;
+		    }else{
+		    	somaDia = tipoDia.getDia()+1;
+		    }
+		    
+			inicio.setTime(h.getInicio());
+			fim.setTime(h.getFim());
+			
+			inicio.add(Calendar.DAY_OF_MONTH, somaDia);
+			fim.add(Calendar.DAY_OF_MONTH, somaDia);
+			
+			//this.incluir(null, h.getDia(), h.getMedico().getId(), inicio.getTime(), fim.getTime(), h.getOrderChegada(), h.getRepetirHorario());
+			
+			h.setStatus(TipoHorario.F);
+			
+			//this.medicoHorarioRep.salvar(h);
+		}	
 		
 	}
-
-	@Override
-	public MedicoHorario obterPorId(long l) {
-		return medicoHorarioRep.obterPorId(1L);
-	}
-
 }

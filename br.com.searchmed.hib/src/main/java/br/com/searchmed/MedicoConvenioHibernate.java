@@ -9,6 +9,7 @@ import org.hibernate.criterion.Restrictions;
 
 import br.com.searchmed.core.entidades.MedicoConvenio;
 import br.com.searchmed.core.entidades.MedicoHorario;
+import br.com.searchmed.core.enuns.TipoHorario;
 import br.com.searchmed.crud.AbstractCrudHibernate;
 
 @Named
@@ -20,6 +21,7 @@ class MedicoConvenioHibernate extends AbstractCrudHibernate<MedicoConvenio, Long
 		List<MedicoHorario> lst = getHibernateTemplate().getSessionFactory().getCurrentSession()
 				.createCriteria(MedicoHorario.class)
 				.add(Restrictions.eq("medico.id", medicoId))
+				.add(Restrictions.eq("status", TipoHorario.A))
 				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
 				.list();
 		return lst;

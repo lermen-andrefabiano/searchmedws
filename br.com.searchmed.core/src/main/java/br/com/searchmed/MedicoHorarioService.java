@@ -2,7 +2,6 @@ package br.com.searchmed;
 
 import java.util.Date;
 
-import br.com.searchmed.core.entidades.MedicoHorario;
 import br.com.searchmed.core.enuns.TipoDia;
 
 public interface MedicoHorarioService {
@@ -12,7 +11,5 @@ public interface MedicoHorarioService {
 	void incluir(String horarioId, TipoDia dia, Long medicoId, Date d1, Date d2, Boolean ordemChegada, Boolean repetirHorario);
 
 	void tarefaHorarioMedico();
-
-	MedicoHorario obterPorId(long l);
 
 }

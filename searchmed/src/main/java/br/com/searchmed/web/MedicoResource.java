@@ -119,13 +119,15 @@ public class MedicoResource extends AbstractResource {
 		    
 		    if(diaSemana < tipoDia.getDia()){
 		    	somaDia = tipoDia.getDia() - diaSemana;
+		    }else{
+		    	somaDia = tipoDia.getDia()+1;
 		    }
 		 
-		    inicio.set(Calendar.DAY_OF_MONTH, somaDia);
+		    inicio.add(Calendar.DAY_OF_MONTH, somaDia);
 		    inicio.set(Calendar.HOUR_OF_DAY, Integer.valueOf(inicioSplit[0]));
 		    inicio.set(Calendar.MINUTE, Integer.valueOf(inicioSplit[1]));
 		    
-		    fim.set(Calendar.DAY_OF_MONTH, somaDia);
+		    fim.add(Calendar.DAY_OF_MONTH, somaDia);
 		    fim.set(Calendar.HOUR_OF_DAY, Integer.valueOf(fimSplit[0]));
 		    fim.set(Calendar.MINUTE, Integer.valueOf(fimSplit[1]));
 		    		

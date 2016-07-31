@@ -49,7 +49,7 @@ public class MedicoHorario implements Serializable {
 	
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 1)
-	private TipoHorario status;
+	private TipoHorario status = TipoHorario.A;
 
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "medico_id", referencedColumnName = "id", nullable = false)

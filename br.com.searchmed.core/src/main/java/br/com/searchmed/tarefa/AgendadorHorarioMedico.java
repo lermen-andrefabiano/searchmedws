@@ -1,33 +1,26 @@
 package br.com.searchmed.tarefa;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.quartz.CronScheduleBuilder;
-import org.quartz.JobBuilder;
-import org.quartz.JobDetail;
-import org.quartz.Scheduler;
-import org.quartz.Trigger;
-import org.quartz.TriggerBuilder;
-import org.quartz.impl.StdSchedulerFactory;
+import br.com.searchmed.MedicoHorarioService;
 
-@Named
-public class AgendadorHorarioMedico{
+//@Named
+public class AgendadorHorarioMedico {
+
+	@Inject
+	private MedicoHorarioService medicoHorarioService;
 
 	public void inicia() throws Exception {
-		// Detalhes da tarefa
-		JobDetail job = JobBuilder.newJob(TarefaHorarioMedico.class).withIdentity("tarefaAgendadorHorarioMedico", "groupAgendadorHorarioMedico").build();
-		// Gatilho - ou seja, quando irá chamar, neste caso, a cada 5 segundos
-		Trigger trigger = TriggerBuilder.newTrigger().withIdentity("gatilhoAgendadorHorarioMedico", "groupAgendadorHorarioMedico")
-				.withSchedule(CronScheduleBuilder.cronSchedule("0/30 * * * * ?")).build();
-		//.withSchedule(CronScheduleBuilder.weeklyOnDayAndHourAndMinute(DateBuilder.WEDNESDAY, 23, 00)).build(); 
-		//.withSchedule(CronScheduleBuilder.weeklyOnDayAndHourAndMinute(DateBuilder.SATURDAY, 23, 00)).build(); 
-						//.cronSchedule("0/60 * * * * ?")).build();
 
-		// Agenda e voa lá!
-		Scheduler scheduler = new StdSchedulerFactory().getScheduler();
-		scheduler.start();
-		scheduler.scheduleJob(job, trigger);
-		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy – hh:mm:ss");
+		System.out.println("Rodou tarefa cadastro horario médico: "	+ dateFormat.format(new Date()));
+
+		medicoHorarioService.tarefaHorarioMedico();
+
 	}
 
 }

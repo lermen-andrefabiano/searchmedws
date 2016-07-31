@@ -1,6 +1,7 @@
 package br.com.searchmed;
 
 import br.com.searchmed.core.entidades.MedicoHorario;
+import java.util.List;
 
 interface MedicoHorarioRepository {
 
@@ -11,5 +12,7 @@ interface MedicoHorarioRepository {
 	MedicoHorario salvar(MedicoHorario obj);
 
 	void excluir(MedicoHorario obj);
+	
+	List<MedicoHorario> listarHorariosAbertos();
 
 }
