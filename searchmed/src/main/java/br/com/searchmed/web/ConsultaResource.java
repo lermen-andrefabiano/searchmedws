@@ -33,6 +33,17 @@ public class ConsultaResource extends AbstractResource {
 	public ConsultaResource(Mapper mapper) {
 		super.mapper = mapper;
 	}
+	
+	@GET
+	@Path("fechar")
+	public Response fechar(@QueryParam("consultaId") Long consultaId) {
+		try{
+			this.consultaService.fechar(consultaId);
+			return Response.ok(true).build();
+		}catch(Exception e){
+			return Response.ok(false).build();
+		}	
+	}
 
 	@GET
 	@Path("abrir")

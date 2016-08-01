@@ -39,20 +39,18 @@ public class ExameResource extends AbstractResource {
 
 	@GET
 	@Path("getExames")
-	public List<ExameDTO> getExames(@QueryParam("palavra") String palavra) {
-		List<Exame> lst = exameService.getExames(palavra);
-
+	public List<ExameDTO> getExames() {
+		List<Exame> lst = exameService.getExames();
 		List<ExameDTO> retorno = super.mapList(lst, ExameDTO.class);
-
 		return retorno;
 	}
 	
-	@GET
+	@POST
 	@Path("excluir")
-	public Response excluir(@QueryParam("id") Long id) {		
-		this.consultaService.excluirExame(id);
+	public Response excluir(@QueryParam("medicoId") Long medicoId, @QueryParam("exameId") Long exameId) {
+		this.consultaService.excluirExame(medicoId, exameId);
 		return Response.ok(true).build();
-	}
+	}	
 	
 	@POST
 	@Path("incluir")

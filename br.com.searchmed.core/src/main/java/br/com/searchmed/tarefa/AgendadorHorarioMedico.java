@@ -4,11 +4,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 
 import br.com.searchmed.MedicoHorarioService;
 
-//@Named
 public class AgendadorHorarioMedico {
 
 	@Inject

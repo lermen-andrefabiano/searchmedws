@@ -24,6 +24,6 @@ public interface ExameService {
 
 	Exame salvar(String descricao);
 
-	List<Exame> getExames(String str);
+	List<Exame> getExames();
 
 }

@@ -24,8 +24,19 @@ class ConsultaExameHibernate extends AbstractCrudHibernate<ConsultaExame, Long> 
 			return lst;
 		} catch (Exception e) {
 			return null;
+		}		
+	}
+
+	@Override
+	public ConsultaExame obterPorConsulta(Long consultaId, Long exameId) {
+		try {
+			Criteria c = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(ConsultaExame.class);				
+			c.add(Restrictions.eq("consulta.id", consultaId));
+			c.add(Restrictions.eq("exame.id", exameId));
+			return (ConsultaExame) c.uniqueResult();
+		} catch (Exception e) {
+			return null;
 		}
-		
 	}
 
 }

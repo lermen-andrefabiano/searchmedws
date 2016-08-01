@@ -14,6 +14,6 @@ interface ExameRepository {
 
 	void excluir(Exame obj);
 
-	List<Exame> getExames(String str) throws Exception;
+	List<Exame> getExames() throws Exception;
 
 }

@@ -36,7 +36,7 @@ public interface ConsultaService {
 
 	void incluirExame(Long consultaId, Long exameId);
 
-	void excluirExame(Long id);
+	void excluirExame(Long id, Long exameId);
 
 	boolean favorito(Long medicoId, Long usuarioId);
 
@@ -47,5 +47,7 @@ public interface ConsultaService {
 	List<Consulta> listarConsultasDoDia(Long medicoId);
 
 	List<Consulta> consultasEmAndamento(Long usuarioId);
+
+	void fechar(Long consultaId);
 
 }

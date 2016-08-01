@@ -33,10 +33,10 @@ public class ExameServiceImpl implements ExameService {
 	}
 	
 	@Override
-	public List<Exame> getExames(String str) {
+	public List<Exame> getExames() {
 		List<Exame> lst = null;
 		try {
-			lst = this.exameRep.getExames(str);
+			lst = this.exameRep.getExames();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

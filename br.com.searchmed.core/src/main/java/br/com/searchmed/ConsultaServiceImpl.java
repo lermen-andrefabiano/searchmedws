@@ -210,9 +210,9 @@ public class ConsultaServiceImpl implements ConsultaService {
 	}
 
 	@Override
-	public void excluirExame(Long id) {
+	public void excluirExame(Long consultaId, Long exameId) {
 		try {
-			ConsultaExame consultaExame = consultaExameRep.obterPorId(id);
+			ConsultaExame consultaExame = consultaExameRep.obterPorConsulta(consultaId, exameId);
 			consultaExameRep.excluir(consultaExame);
 		} catch (Exception e) {
 		}		
@@ -236,6 +236,13 @@ public class ConsultaServiceImpl implements ConsultaService {
 		} catch (Exception e) {
 			return false;
 		}		
+	}
+
+	@Override
+	public void fechar(Long consultaId) {
+		Consulta c = this.consultaRep.obterPorId(consultaId);
+		c.setStatus(TipoStatus.F);
+		this.consultaRep.salvar(c);
 	}
 	
 }
