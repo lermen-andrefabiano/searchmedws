@@ -25,15 +25,13 @@ public class TestConvenioHibernate extends AbstractSpringTest {
     	Medico m2 = this.medicoRep.obterPorId(5L);
     	
         assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Camed", m3)));
-        //assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Fassincra", m)));
-        //assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Geap", m)));
-        //assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Unimed", m)));
-        //assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Uniodonto", m)));
+        assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Fassincra", m)));
+        assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Geap", m)));
+        assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Unimed", m)));
+        assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Uniodonto", m)));
         
-        //assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Unimed", m2)));   
-        //assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Uniodonto", m2)));
-       
-        
+        assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Unimed", m2)));   
+        assertNotNull(this.medicoConvenioRep.salvar(new MedicoConvenio("Uniodonto", m2)));
        
     }
 

@@ -16,8 +16,7 @@ class ConsultaExameHibernate extends AbstractCrudHibernate<ConsultaExame, Long> 
 	@Override
 	public List<ConsultaExame> obterPorConsulta(Long id)  throws Exception{
 		try {
-			Criteria c = getHibernateTemplate().getSessionFactory()
-					.getCurrentSession().createCriteria(ConsultaExame.class);				
+			Criteria c = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(ConsultaExame.class);				
 			c.add(Restrictions.eq("consulta.id", id));
 			@SuppressWarnings("unchecked")
 			List<ConsultaExame> lst = c.list();

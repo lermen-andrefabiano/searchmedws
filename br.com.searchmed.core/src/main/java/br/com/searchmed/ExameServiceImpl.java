@@ -1,11 +1,15 @@
 package br.com.searchmed;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.searchmed.core.entidades.Consulta;
+import br.com.searchmed.core.entidades.ConsultaExame;
 import br.com.searchmed.core.entidades.Exame;
+import br.com.searchmed.core.entidades.Laboratorio;
 
 /**
  * 
@@ -17,6 +21,12 @@ public class ExameServiceImpl implements ExameService {
 
 	@Inject
 	private ExameRepository exameRep;
+	
+	@Inject
+	private ConsultaService consultaService;
+	
+	@Inject
+	private ConsultaExameService consultaExameService;
 
 	public Exame obterPorId(Long id) {
 		return exameRep.obterPorId(id);
@@ -41,6 +51,22 @@ public class ExameServiceImpl implements ExameService {
 			e.printStackTrace();
 		}
 		return lst;		
+	}
+
+	@Override
+	public List<ConsultaExame> getExamesConsulta(Long usuarioId) {
+		List<ConsultaExame> lst = new ArrayList<ConsultaExame>();
+		List<Consulta> consultasEmAndamento = consultaService.consultasEmAndamento(usuarioId);
+		
+		for(Consulta c : consultasEmAndamento){
+			lst.addAll(this.consultaExameService.obterPorConsulta(c.getId()));
+		}
+		return lst;	
+	}
+
+	@Override
+	public List<Laboratorio> listarLaboratorios(Long exameId) {
+		return this.exameRep.listarLaboratorios(exameId);
 	}
 
 }

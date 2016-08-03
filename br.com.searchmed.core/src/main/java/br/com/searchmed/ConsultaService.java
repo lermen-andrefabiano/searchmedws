@@ -40,7 +40,7 @@ public interface ConsultaService {
 
 	boolean favorito(Long medicoId, Long usuarioId);
 
-	List<Consulta> consultasAbertasPaciente(Long medicoId);
+	List<Consulta> consultasAbertasPaciente(Long usuarioId);
 
 	List<Consulta> consultasAntigasMedico(Long medicoId);
 

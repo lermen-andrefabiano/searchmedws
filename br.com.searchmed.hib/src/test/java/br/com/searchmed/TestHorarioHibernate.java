@@ -23,11 +23,8 @@ public class TestHorarioHibernate extends AbstractSpringTest {
 	@Ignore
 	@Test
 	public void salvar() {
-		Medico m = this.medicoRep.obterPorId(4L);
 		Medico m2 = this.medicoRep.obterPorId(3L);
 
-		//assertNotNull(this.medicoHorarioRep.salvar(new MedicoHorario(new Date(), new Date(), true, m)));
-		//assertNotNull(this.medicoHorarioRep.salvar(new MedicoHorario(new Date(), new Date(), true, m2)));
 		assertNotNull(this.medicoHorarioRep.salvar(new MedicoHorario(TipoDia.SEGUNDA, new Date(), new Date(), true, m2, false)));
 		assertNotNull(this.medicoHorarioRep.salvar(new MedicoHorario(TipoDia.TERCA, new Date(), new Date(), false, m2, false)));
 		assertNotNull(this.medicoHorarioRep.salvar(new MedicoHorario(TipoDia.QUINTA, new Date(), new Date(), false, m2, false)));

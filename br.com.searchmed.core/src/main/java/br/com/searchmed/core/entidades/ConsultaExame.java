@@ -38,6 +38,10 @@ public class ConsultaExame implements Serializable {
 	@Column(nullable = false)
 	private Date data;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
+	private Date realizou;
+
 	@Enumerated(EnumType.STRING)
 	@Column(nullable = false, length = 1)
 	private TipoStatus status;
@@ -49,6 +53,10 @@ public class ConsultaExame implements Serializable {
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	@JoinColumn(name = "consulta_id", referencedColumnName = "id", nullable = false)
 	private Consulta consulta;
+
+	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@JoinColumn(name = "laboratorio_exame_id", referencedColumnName = "id", nullable = false)
+	private LaboratorioExame laboratorioExame;
 
 	public ConsultaExame() {
 	}
@@ -80,6 +88,14 @@ public class ConsultaExame implements Serializable {
 		this.data = data;
 	}
 
+	public Date getRealizou() {
+		return realizou;
+	}
+
+	public void setRealizou(Date realizou) {
+		this.realizou = realizou;
+	}
+
 	public TipoStatus getStatus() {
 		return status;
 	}
@@ -102,6 +118,14 @@ public class ConsultaExame implements Serializable {
 
 	public void setConsulta(Consulta consulta) {
 		this.consulta = consulta;
+	}
+
+	public LaboratorioExame getLaboratorioExame() {
+		return laboratorioExame;
+	}
+
+	public void setLaboratorioExame(LaboratorioExame laboratorioExame) {
+		this.laboratorioExame = laboratorioExame;
 	}
 
 }

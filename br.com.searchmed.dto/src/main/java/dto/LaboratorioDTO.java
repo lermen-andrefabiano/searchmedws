@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "laboratorio")
@@ -8,6 +10,7 @@ public class LaboratorioDTO {
 	private Long id;
 	private String cnpj;
 	private String nome;
+	private List<LaboratorioExameDTO> exames;
 
 	public LaboratorioDTO() {
 	}
@@ -34,6 +37,14 @@ public class LaboratorioDTO {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public List<LaboratorioExameDTO> getExames() {
+		return exames;
+	}
+
+	public void setExames(List<LaboratorioExameDTO> exames) {
+		this.exames = exames;
 	}
 
 }

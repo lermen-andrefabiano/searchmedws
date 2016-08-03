@@ -17,8 +17,12 @@ import org.dozer.Mapper;
 
 import br.com.searchmed.ConsultaService;
 import br.com.searchmed.ExameService;
+import br.com.searchmed.core.entidades.ConsultaExame;
 import br.com.searchmed.core.entidades.Exame;
+import br.com.searchmed.core.entidades.Laboratorio;
+import dto.ConsultaExameDTO;
 import dto.ExameDTO;
+import dto.LaboratorioDTO;
 
 @Named
 @Path("exame")
@@ -35,6 +39,22 @@ public class ExameResource extends AbstractResource {
 	@Inject
 	public ExameResource(Mapper mapper) {
 		super.mapper = mapper;
+	}
+	
+	@GET
+	@Path("getLaboratorio")
+	public List<LaboratorioDTO> listarLaboratorios(@QueryParam("exameId") Long exameId) {
+		List<Laboratorio> lst = exameService.listarLaboratorios(exameId);
+		List<LaboratorioDTO> retorno = super.mapList(lst, LaboratorioDTO.class);
+		return retorno;
+	}
+	
+	@GET
+	@Path("getExamesConsulta")
+	public List<ConsultaExameDTO> getExamesConsulta(@QueryParam("usuarioId") Long usuarioId) {
+		List<ConsultaExame> lst = exameService.getExamesConsulta(usuarioId);
+		List<ConsultaExameDTO> retorno = super.mapList(lst, ConsultaExameDTO.class);
+		return retorno;
 	}
 
 	@GET

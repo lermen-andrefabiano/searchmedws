@@ -2,7 +2,9 @@ package br.com.searchmed;
 
 import java.util.List;
 
+import br.com.searchmed.core.entidades.ConsultaExame;
 import br.com.searchmed.core.entidades.Exame;
+import br.com.searchmed.core.entidades.Laboratorio;
 
 /**
  * 
@@ -25,5 +27,9 @@ public interface ExameService {
 	Exame salvar(String descricao);
 
 	List<Exame> getExames();
+
+	List<ConsultaExame> getExamesConsulta(Long usuarioId);
+
+	List<Laboratorio> listarLaboratorios(Long exameId);
 
 }
