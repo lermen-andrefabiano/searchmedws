@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -50,9 +49,17 @@ public class ExameResource extends AbstractResource {
 	}
 	
 	@GET
+	@Path("getExamesUsuario")
+	public List<ConsultaExameDTO> getExamesUsuario(@QueryParam("usuarioId") Long usuarioId) {
+		List<ConsultaExame> lst = exameService.getExamesUsuario(usuarioId);
+		List<ConsultaExameDTO> retorno = super.mapList(lst, ConsultaExameDTO.class);
+		return retorno;
+	}
+	
+	@GET
 	@Path("getExamesConsulta")
-	public List<ConsultaExameDTO> getExamesConsulta(@QueryParam("usuarioId") Long usuarioId) {
-		List<ConsultaExame> lst = exameService.getExamesConsulta(usuarioId);
+	public List<ConsultaExameDTO> getExamesConsulta(@QueryParam("consultaId") Long consultaId) {
+		List<ConsultaExame> lst = exameService.getExamesConsulta(consultaId);
 		List<ConsultaExameDTO> retorno = super.mapList(lst, ConsultaExameDTO.class);
 		return retorno;
 	}
@@ -65,14 +72,14 @@ public class ExameResource extends AbstractResource {
 		return retorno;
 	}
 	
-	@POST
+	@GET
 	@Path("excluir")
-	public Response excluir(@QueryParam("medicoId") Long medicoId, @QueryParam("exameId") Long exameId) {
-		this.consultaService.excluirExame(medicoId, exameId);
+	public Response excluir(@QueryParam("consultaId") Long consultaId, @QueryParam("exameId") Long exameId) {
+		this.consultaService.excluirExame(consultaId, exameId);
 		return Response.ok(true).build();
 	}	
 	
-	@POST
+	@GET
 	@Path("incluir")
 	public Response incluir(@QueryParam("consultaId") Long consultaId, @QueryParam("exameId") Long exameId) {		
 		this.consultaService.incluirExame(consultaId, exameId);

@@ -58,6 +58,16 @@ public class ConsultaServiceImpl implements ConsultaService {
 	private MedicoFavoritoRepository medicoFavoritoRep;
 	
 	@Override
+	public List<ConsultaExame> obterPorConsulta(Long consultaId) {
+		try {
+			return this.consultaExameRep.obterPorConsulta(consultaId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
 	public void abrir(Long usuarioId, Long medicoId, Long especialidadeId, Long horarioId) {
 		Usuario usuario = usuarioRep.obterPorId(usuarioId);
 		Medico medico = medicoRep.obterPorId(medicoId);

@@ -54,7 +54,7 @@ public class ExameServiceImpl implements ExameService {
 	}
 
 	@Override
-	public List<ConsultaExame> getExamesConsulta(Long usuarioId) {
+	public List<ConsultaExame> getExamesUsuario(Long usuarioId) {
 		List<ConsultaExame> lst = new ArrayList<ConsultaExame>();
 		List<Consulta> consultasEmAndamento = consultaService.consultasEmAndamento(usuarioId);
 		
@@ -67,6 +67,12 @@ public class ExameServiceImpl implements ExameService {
 	@Override
 	public List<Laboratorio> listarLaboratorios(Long exameId) {
 		return this.exameRep.listarLaboratorios(exameId);
+	}
+
+	@Override
+	public List<ConsultaExame> getExamesConsulta(Long consultaId) {
+		List<ConsultaExame> c = consultaService.obterPorConsulta(consultaId);
+		return c;
 	}
 
 }

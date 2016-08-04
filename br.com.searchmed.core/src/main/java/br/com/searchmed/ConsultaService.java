@@ -3,6 +3,7 @@ package br.com.searchmed;
 import java.util.List;
 
 import br.com.searchmed.core.entidades.Consulta;
+import br.com.searchmed.core.entidades.ConsultaExame;
 
 /**
  * 
@@ -49,5 +50,7 @@ public interface ConsultaService {
 	List<Consulta> consultasEmAndamento(Long usuarioId);
 
 	void fechar(Long consultaId);
+
+	List<ConsultaExame> obterPorConsulta(Long consultaId);
 
 }

@@ -54,7 +54,7 @@ public class ConsultaExame implements Serializable {
 	@JoinColumn(name = "consulta_id", referencedColumnName = "id", nullable = false)
 	private Consulta consulta;
 
-	@ManyToOne(optional = false, fetch = FetchType.LAZY)
+	@ManyToOne(optional = true, fetch = FetchType.LAZY)
 	@JoinColumn(name = "laboratorio_exame_id", referencedColumnName = "id", nullable = false)
 	private LaboratorioExame laboratorioExame;
 

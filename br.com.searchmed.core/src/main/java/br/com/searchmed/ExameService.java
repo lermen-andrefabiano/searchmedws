@@ -28,8 +28,10 @@ public interface ExameService {
 
 	List<Exame> getExames();
 
-	List<ConsultaExame> getExamesConsulta(Long usuarioId);
+	List<ConsultaExame> getExamesUsuario(Long usuarioId);
 
 	List<Laboratorio> listarLaboratorios(Long exameId);
+
+	List<ConsultaExame> getExamesConsulta(Long consultaId);
 
 }
