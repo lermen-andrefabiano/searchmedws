@@ -39,7 +39,7 @@ public class ConsultaExame implements Serializable {
 	private Date data;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private Date realizou;
 
 	@Enumerated(EnumType.STRING)
