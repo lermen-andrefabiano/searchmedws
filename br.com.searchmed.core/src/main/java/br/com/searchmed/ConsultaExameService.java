@@ -21,6 +21,9 @@ import br.com.searchmed.core.entidades.ConsultaExame;
 public interface ConsultaExameService {
 
 	List<ConsultaExame> obterPorConsulta(Long consultaId);
-
+	
+	ConsultaExame obterPorId(Long id);
+	
+	ConsultaExame salvar(ConsultaExame obj);
 
 }

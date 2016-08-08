@@ -27,5 +27,15 @@ public class ConsultaExameServiceImpl implements ConsultaExameService {
 		}
 		return null;
 	}
+
+	@Override
+	public ConsultaExame obterPorId(Long id) {
+		return consultaExameRep.obterPorId(id);
+	}
+
+	@Override
+	public ConsultaExame salvar(ConsultaExame obj) {
+		return consultaExameRep.salvar(obj);
+	}
 	
 }

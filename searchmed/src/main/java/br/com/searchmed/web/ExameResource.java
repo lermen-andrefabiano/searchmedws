@@ -85,5 +85,12 @@ public class ExameResource extends AbstractResource {
 		this.consultaService.incluirExame(consultaId, exameId);
 		return Response.ok(true).build();
 	}
+	
+	@GET
+	@Path("agenda")
+	public Response agenda(@QueryParam("agenda") Long agenda, @QueryParam("laboratorioId") Long laboratorioId, @QueryParam("consultarExameId") Long consultarExameId) {		
+		this.exameService.agenda(agenda, laboratorioId, consultarExameId);
+		return Response.ok(true).build();
+	}
 
 }

@@ -34,4 +34,6 @@ public interface ExameService {
 
 	List<ConsultaExame> getExamesConsulta(Long consultaId);
 
+	void agenda(Long agenda, Long laboratorioId, Long consultarExameId);
+
 }
