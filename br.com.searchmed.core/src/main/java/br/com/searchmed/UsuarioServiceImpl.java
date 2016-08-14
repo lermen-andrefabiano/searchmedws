@@ -50,7 +50,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	private void validaSenha(Usuario u, String senha) throws SearchMedException {
-		if (!u.getSenha().equals(senha)) {
+		if (!u.getSenha().trim().equals(senha.trim())) {
 			throw new SearchMedException(HOME_HELP_SENHA_INVALIDA);
 		}
 	}
@@ -61,8 +61,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		if(login.getTipo().equals(TipoUsuario.M)){
 			login.getMedico().setUsuario(login);
-		}		
+		}
 		
+		login.setSenha(login.getSenha().trim());		
 				
 		if(login!=null&&login.getId()!=null&&login.getId()>0){
 			u = this.usuarioRep.obterPorId(login.getId());	

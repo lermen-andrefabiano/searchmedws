@@ -43,7 +43,7 @@ public class Usuario implements Serializable {
 	@Column(nullable = false, length = 300)
 	private String endereco;
 
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 2000)
 	private String senha;
 	
 	private Double latitude;
