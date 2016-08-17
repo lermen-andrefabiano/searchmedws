@@ -21,6 +21,7 @@
 		<property name="repeatInterval" value="90000" />
 	</bean>
 	
+	<!-- Sexta-feira as 11 -->
 	<bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="detalheTarefa" />
 		<property name="cronExpression" value="0 00 11 ? * FRI" />

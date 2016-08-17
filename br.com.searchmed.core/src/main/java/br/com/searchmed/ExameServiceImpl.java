@@ -61,7 +61,7 @@ public class ExameServiceImpl implements ExameService {
 	@Override
 	public List<ConsultaExame> getExamesUsuario(Long usuarioId) {
 		List<ConsultaExame> lst = new ArrayList<ConsultaExame>();
-		List<Consulta> consultasEmAndamento = consultaService.consultasEmAndamento(usuarioId);
+		List<Consulta> consultasEmAndamento = consultaService.consultasAntigas(usuarioId);
 		
 		for(Consulta c : consultasEmAndamento){
 			lst.addAll(this.consultaExameService.obterPorConsulta(c.getId()));

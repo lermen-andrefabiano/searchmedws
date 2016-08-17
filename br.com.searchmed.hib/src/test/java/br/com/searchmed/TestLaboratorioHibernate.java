@@ -25,7 +25,7 @@ public class TestLaboratorioHibernate extends AbstractSpringTest {
 		List<Laboratorio> lst = exameRep.listarLaboratorios(1L);
 
 		for (Laboratorio l : lst) {
-			log.debug(l.getNome());
+			log.debug(l.getId() +" " +l.getNome());
 			for (LaboratorioExame e : l.getExames()) {
 				log.debug(e.getExame().getDescricao());
 			}
@@ -37,7 +37,7 @@ public class TestLaboratorioHibernate extends AbstractSpringTest {
 		List<Laboratorio> lst = laboratorioRep.listar();
 
 		for (Laboratorio l : lst) {
-			log.debug(l.getNome());
+			log.debug(l.getId() +" " +l.getNome());
 			for (LaboratorioExame e : l.getExames()) {
 				log.debug(e.getExame().getDescricao());
 			}
@@ -90,5 +90,37 @@ public class TestLaboratorioHibernate extends AbstractSpringTest {
 		l1.getExames().add(le12);
 		
 		laboratorioRep.persist(l1);
+	}
+	
+	@Test
+	public void persist2() {
+		List<Exame> exames = exameRep.listar(); // 7 exames
+		
+		Laboratorio l = new Laboratorio();
+		l.setCnpj("9999999999999");
+		l.setNome("Clínica Dois");
+		l.setExames(new ArrayList<LaboratorioExame>());
+		
+		LaboratorioExame le = new LaboratorioExame();
+		le.setLaboratorio(l);
+		le.setExame(exames.get(0));
+		l.getExames().add(le);
+		
+		LaboratorioExame le1 = new LaboratorioExame();
+		le1.setLaboratorio(l);
+		le1.setExame(exames.get(1));
+		l.getExames().add(le1);		
+		
+		LaboratorioExame le2 = new LaboratorioExame();
+		le2.setLaboratorio(l);
+		le2.setExame(exames.get(2));
+		l.getExames().add(le2);
+		
+		LaboratorioExame le12 = new LaboratorioExame();
+		le12.setLaboratorio(l);
+		le12.setExame(exames.get(3));
+		l.getExames().add(le12);
+		
+		laboratorioRep.persist(l);
 	}
 }
