@@ -83,11 +83,16 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void trocarSenha(Long usuarioId, String senha) {
+	public boolean trocarSenha(Long usuarioId, String senha, String novaSenha) {
 		Usuario u = this.obterPorId(usuarioId);
-		u.setSenha(senha);
 		
-		this.usuarioRep.salvar(u);		
+		if(u!=null && u.getSenha().equals(senha)){
+			u.setSenha(novaSenha);
+			this.usuarioRep.salvar(u);		
+			return true;
+		}else{
+			return false;
+		}	
 	}
 
 	@Override

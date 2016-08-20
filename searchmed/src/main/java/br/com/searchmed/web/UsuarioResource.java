@@ -77,11 +77,11 @@ public class UsuarioResource extends AbstractResource {
 		return retorno;		
 	}
 	
-	@POST
-	@Path("senha")
-	public Response senha(@QueryParam("usuarioId") Long usuarioId, String senha) {		
-		this.usuarioService.trocarSenha(usuarioId, senha);
-		return Response.ok(true).build();
+	@GET
+	@Path("trocarSenha")
+	public Response senha(@QueryParam("usuarioId") Long usuarioId, @QueryParam("senha") String senha, @QueryParam("novaSenha") String novaSenha) {		
+		boolean result = this.usuarioService.trocarSenha(usuarioId, senha, novaSenha);
+		return Response.ok(result).build();
 	}	
 
 }
