@@ -15,7 +15,7 @@ public class ConsultaDTO {
 	private EspecialidadeDTO especialidade;
 	private UsuarioDTO usuario;
 	private MedicoDTO medico;
-	private ConsultaClassificacaoDTO classificacao;
+	//private ConsultaClassificacaoDTO classificacao;
 	private List<ConsultaExameDTO> exames;
 
 	public ConsultaDTO() {
@@ -77,13 +77,13 @@ public class ConsultaDTO {
 		this.medico = medico;
 	}
 
-	public ConsultaClassificacaoDTO getClassificacao() {
-		return classificacao;
-	}
-
-	public void setClassificacao(ConsultaClassificacaoDTO classificacao) {
-		this.classificacao = classificacao;
-	}
+//	public ConsultaClassificacaoDTO getClassificacao() {
+//		return classificacao;
+//	}
+//
+//	public void setClassificacao(ConsultaClassificacaoDTO classificacao) {
+//		this.classificacao = classificacao;
+//	}
 
 	public List<ConsultaExameDTO> getExames() {
 		return exames;

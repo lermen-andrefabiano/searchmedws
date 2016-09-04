@@ -115,6 +115,7 @@ class ConsultaHibernate extends AbstractCrudHibernate<Consulta, Long> implements
 		c.createAlias("medico", "medico");
 		c.createAlias("usuario", "usuario");
 		c.createAlias("horario", "horario");
+		c.createAlias("classificacao", "classificacao");
 		c.add(Restrictions.eq("usuario.id", usuarioId));
 		c.add(Restrictions.eq("status", TipoStatus.F));
 		c.addOrder(Order.asc("data"));
