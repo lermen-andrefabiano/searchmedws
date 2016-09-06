@@ -20,7 +20,7 @@ import br.com.searchmed.core.entidades.ConsultaExame;
  */
 public interface ConsultaExameService {
 
-	List<ConsultaExame> obterPorConsulta(Long consultaId);
+	List<ConsultaExame> getExamesUsuario(Long usuarioId);
 	
 	ConsultaExame obterPorId(Long id);
 	

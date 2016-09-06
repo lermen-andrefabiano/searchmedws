@@ -38,4 +38,20 @@ class ConsultaExameHibernate extends AbstractCrudHibernate<ConsultaExame, Long> 
 		}
 	}
 
+	@Override
+	public List<ConsultaExame> getExamesUsuario(Long usuarioId) {
+		try {
+			Criteria c = getHibernateTemplate().getSessionFactory().getCurrentSession().createCriteria(ConsultaExame.class);	
+			c.createAlias("exame", "exame");
+			c.createAlias("consulta", "consulta");
+			c.add(Restrictions.eq("consulta.usuario.id", usuarioId));
+			c.add(Restrictions.isNull("realizou"));
+			@SuppressWarnings("unchecked")
+			List<ConsultaExame> lst = c.list();
+			return lst;
+		} catch (Exception e) {
+			return null;
+		}		
+	}
+
 }

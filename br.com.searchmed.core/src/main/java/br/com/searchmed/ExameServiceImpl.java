@@ -7,7 +7,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.searchmed.core.entidades.Consulta;
 import br.com.searchmed.core.entidades.ConsultaExame;
 import br.com.searchmed.core.entidades.Exame;
 import br.com.searchmed.core.entidades.Laboratorio;
@@ -60,12 +59,8 @@ public class ExameServiceImpl implements ExameService {
 
 	@Override
 	public List<ConsultaExame> getExamesUsuario(Long usuarioId) {
-		List<ConsultaExame> lst = new ArrayList<ConsultaExame>();
-		List<Consulta> consultasEmAndamento = consultaService.consultasAntigas(usuarioId);
-		
-		for(Consulta c : consultasEmAndamento){
-			lst.addAll(this.consultaExameService.obterPorConsulta(c.getId()));
-		}
+		List<ConsultaExame> lst = new ArrayList<ConsultaExame>();		
+		lst = this.consultaExameService.getExamesUsuario(usuarioId);
 		return lst;	
 	}
 

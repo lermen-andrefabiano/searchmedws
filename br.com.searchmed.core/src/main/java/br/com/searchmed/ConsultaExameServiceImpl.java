@@ -19,9 +19,9 @@ public class ConsultaExameServiceImpl implements ConsultaExameService {
 	private ConsultaExameRepository consultaExameRep;	
 
 	@Override
-	public List<ConsultaExame> obterPorConsulta(Long consultaId) {
+	public List<ConsultaExame> getExamesUsuario(Long usuarioId) {
 		try {
-			return consultaExameRep.obterPorConsulta(consultaId);
+			return consultaExameRep.getExamesUsuario(usuarioId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

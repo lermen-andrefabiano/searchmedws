@@ -17,5 +17,7 @@ interface ConsultaExameRepository {
 	List<ConsultaExame> obterPorConsulta(Long id) throws Exception;
 
 	ConsultaExame obterPorConsulta(Long consultaId, Long exameId);
+	
+	List<ConsultaExame> getExamesUsuario(Long usuarioId);
 
 }
