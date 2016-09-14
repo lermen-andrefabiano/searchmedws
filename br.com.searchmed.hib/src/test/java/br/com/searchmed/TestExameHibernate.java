@@ -22,5 +22,10 @@ public class TestExameHibernate extends AbstractSpringTest {
 		assertNotNull(this.exameRep.salvar(new Exame("Sigmoidoscopia")));
 		assertNotNull(this.exameRep.salvar(new Exame("Reação de Agostini")));
 	}
+	
+	@Test
+	public void salvarLoinc() {
+		assertNotNull(this.exameRep.salvar(new Exame("Imunofenotipagem", "55230-7","Immunophenotyping study")));
+	}
 
 }

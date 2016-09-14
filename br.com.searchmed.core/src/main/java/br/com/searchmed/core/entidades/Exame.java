@@ -26,6 +26,12 @@ public class Exame implements Serializable {
 
     @Column(nullable = false, length = 300)
     private String descricao;
+    
+    @Column(length = 300)
+    private String loinc;
+    
+    @Column(length = 300)
+    private String loincName;
 
     public Exame() {
     }
@@ -36,9 +42,15 @@ public class Exame implements Serializable {
 
     public Exame(String descricao) {
         this.descricao = descricao;
-    }
+    }    
 
-    public Long getId() {
+    public Exame(String descricao, String loinc, String loincName) {		
+		this.descricao = descricao;
+		this.loinc = loinc;
+		this.loincName = loincName;
+	}
+
+	public Long getId() {
         return id;
     }
 
@@ -53,5 +65,21 @@ public class Exame implements Serializable {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+    
+    public String getLoinc() {
+		return loinc;
+	}
+    
+    public void setLoinc(String loinc) {
+		this.loinc = loinc;
+	}
+    
+    public String getLoincName() {
+		return loincName;
+	}
+    
+    public void setLoincName(String loincName) {
+		this.loincName = loincName;
+	}
 
 }
